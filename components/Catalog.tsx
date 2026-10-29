@@ -35,7 +35,7 @@ export default function Catalog({ products, initialCategory = '', initialQuery =
       if (category && p.category !== category) return false;
       if (!certs.every((c) => p.certifications.includes(c))) return false;
       if (!q) return true;
-      return `${p.name} ${p.shortDesc} ${p.id} ${categoryName(p.category)}`.toLowerCase().includes(q);
+      return `${p.name} ${p.brand ?? ''} ${p.subcategory ?? ''} ${p.shortDesc} ${p.id} ${categoryName(p.category)}`.toLowerCase().includes(q);
     });
   }, [products, category, query, certs]);
 

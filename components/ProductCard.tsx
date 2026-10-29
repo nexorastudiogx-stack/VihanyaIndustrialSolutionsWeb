@@ -20,7 +20,11 @@ export default function ProductCard({ product }: { product: Product }) {
         />
       </div>
       <div className="flex flex-1 flex-col gap-2 border-t-2 border-amber p-4">
-        <p className="text-xs text-steel">{categoryName(product.category)}</p>
+        <div className="flex flex-wrap items-center gap-2 text-xs text-steel">
+          <span>{categoryName(product.category)}</span>
+          {product.brand && <span className="border border-line px-1.5 py-0.5 font-semibold uppercase tracking-[0.12em]">{product.brand}</span>}
+          {product.subcategory && <span className="truncate">{product.subcategory}</span>}
+        </div>
         <h3 className="font-heading text-xl font-semibold leading-tight">{product.name}</h3>
         <p className="line-clamp-2 text-sm text-steel">{product.shortDesc}</p>
         <div className="mt-auto flex items-end justify-between gap-2 pt-2">

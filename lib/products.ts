@@ -7,6 +7,8 @@ export interface Product {
   id: string;
   name: string;
   category: CategorySlug;
+  brand?: string;
+  subcategory?: string;
   /** Path under /public, e.g. '/images/products/steel-toe-shoe.jpg' */
   image: string;
   certifications: CertificationCode[];
@@ -143,6 +145,89 @@ export const products: Product[] = [
     moq: 50,
   },
 ];
+
+const catalogSafetyShoes: Product[] = [
+  // JCB Safety Footwear
+  ['jcb', 'Rumble', 'Rumble', 'Single-density DIP PU sole, padded collar, reflective strip, oil and chemical resistant.', '5-12'],
+  ['jcb', 'Ounce', 'Ounce', 'Double-density DIP PU sole, padded collar, reflective strip, oil and chemical resistant.', '5-12'],
+  ['jcb', 'Earthmover', 'Earthmover', 'Double-density DIP PU sole, padded collar and lightweight oil-resistant construction.', '5-12'],
+  ['jcb', 'Sitemaster', 'Sitemaster', 'Double-density DIP PU sole with padded collar and oil and chemical resistance.', '5-12'],
+  ['jcb', 'Mighty', 'Mighty', 'Double-density DIP PU sole, five-eyelet fit and lightweight worksite protection.', '5-12'],
+  ['jcb', 'All-Terrain', 'All-Terrain', 'Apollo leather upper, DIP PU plus nitrile sole, 35J heel and acid/alkali resistance.', '5-12'],
+  ['jcb', 'Exec', 'Exec', 'Full-grain leather upper, double-density DIP PU plus PU sole and 35J heel.', '5-12'],
+  ['jcb', 'Vent', 'Vent', 'Suede leather with scuff cap, double-density sole, 35J heel and lightweight build.', '5-12'],
+  ['jcb', 'Ecoboost', 'Ecoboost', 'Suede leather upper, single-density DIP PU sole and lightweight oil-resistant build.', '5-12'],
+  ['jcb', 'Countess', 'Ladies', 'Ladies full-grain leather safety shoe with Velcro fastening and 35J heel.', '2-8'],
+  ['jcb', 'Access', 'Access', 'Full-grain Apollo leather shoe with Velcro fastening and lightweight sole.', '5-12'],
+  ['jcb', 'Hydromaster', 'Hydromaster', 'Quick-drying microfiber upper, slip-on elastic gusset and oil-resistant sole.', '5-12'],
+  ['jcb', 'Powerboom', 'Powerboom', 'High-tenacity fly-net upper, padded collar and highly comfortable lightweight fit.', '5-12'],
+  ['jcb', 'Fastrac', 'Fastrac', 'High-tenacity fly-net upper with padded collar, oil resistance and lightweight comfort.', '5-12'],
+  ['jcb', 'Loadall', 'Loadall', 'Full-grain printed leather, double-density DIP PU sole and metal eyelets with hooks.', '5-12'],
+  ['jcb', 'Excavator', 'Excavator', 'Full-grain Apollo leather, D-rings and hooks, antistatic protection and 35J heel.', '5-12'],
+  ['jcb', 'Trekker', 'Trekker', 'Nubuck leather upper, double-density DIP PU sole, hooks and antistatic 35J heel.', '5-12'],
+  ['jcb', 'Speedmax', 'Speedmax', 'Textured leather upper, thermoplastic toe stiffener, double-density PU sole and Velcro fastening.', '5-12'],
+  ['jcb', 'Heatmax', 'Heatmax', 'Apollo leather, DIP nitrile sole, 15kV electrical protection and 25J heel.', '5-12'],
+  ['jcb', 'Heatking', 'Heatking', 'Apollo leather, DIP nitrile sole, 15kV electrical protection and 25J heel.', '5-12'],
+  ['jcb', 'Gutso', 'Low ankle', 'Apollo leather, double-density DIP PU sole, antistatic properties and 130°C sole.', '5-12'],
+  ['jcb', 'Electron', 'Electrical', 'Apollo leather with double-density DIP PU sole and electrical testing up to 15kV.', '5-12'],
+  ['jcb', 'Exvolt', 'Electrical', 'Apollo leather, double-density DIP PU sole, 35J heel and 15kV electrical protection.', '5-12'],
+  ['jcb', 'Rush', 'ESD', 'High-tenacity fly-net upper, very lightweight construction and ESD sole resistance.', '5-12'],
+  ['jcb', 'Clean Pro', 'Cleanroom', 'Washable microfiber upper, antistatic and anti-slip sole for cleanroom use.', '5-12'],
+  ['jcb', 'Agile', 'Low ankle', 'Apollo leather, double-density DIP PU sole and fuel and chemical resistance.', '5-12'],
+  ['jcb', 'Duchess', 'Ladies', 'Ladies Apollo leather shoe with single-density DIP PU sole and padded collar.', '2-8'],
+  ['jcb', 'My Micros', 'Ladies', 'Washable microfiber upper, double-density sole and very lightweight fit.', '2-8'],
+  // Everest Safety footwear
+  ['everest', 'EVE-101', 'Low ankle', 'Industrial safety shoe with single-density sole and steel-toe protection.', '38-46'],
+  ['everest', 'EVE-102', 'Low ankle', 'Industrial safety shoe with double-density sole and steel-toe protection.', '38-46'],
+  ['everest', 'EVE-103', 'Low ankle', 'Industrial safety shoe with breathable lining and protective toe cap.', '38-46'],
+  ['everest', 'EVE-104-DD', 'Double density', 'Double-density PU safety shoe for general industrial applications.', '38-46'],
+  ['everest', 'EVE-104-A-SD', 'Antistatic', 'Antistatic single-density industrial safety shoe.', '38-46'],
+  ['everest', 'EVE-104-A-DD', 'Antistatic', 'Antistatic double-density industrial safety shoe.', '38-46'],
+  ['everest', 'EVE-105-A-DD', 'Antistatic', 'Double-density antistatic safety shoe with brown mesh lining.', '38-46'],
+  ['everest', 'EVE-106-A-SD', 'Antistatic', 'Antistatic single-density safety shoe for industrial work.', '38-46'],
+  ['everest', 'EVE-106-A-DD', 'Antistatic', 'Antistatic double-density safety shoe for industrial work.', '38-46'],
+  ['everest', 'EVE-107-DD', 'Double density', 'Double-density PU safety shoe with steel-toe protection.', '38-46'],
+  ['everest', 'EVE-108-SD', 'Single density', 'Single-density PU safety shoe for everyday industrial use.', '38-46'],
+  ['everest', 'EVE-202-SD', 'Single density', 'Single-density industrial safety shoe with durable upper.', '38-46'],
+  ['everest', 'EVE-203-DD', 'Double density', 'Double-density PU sole safety shoe for heavy-duty use.', '38-46'],
+  ['everest', 'EVE-204-A-DD', 'Antistatic', 'Antistatic double-density safety shoe with industrial toe protection.', '38-46'],
+  ['everest', 'EVE-206-A-SD', 'Antistatic', 'Antistatic single-density safety shoe with lightweight construction.', '38-46'],
+  ['everest', 'EVE-301-SD', 'Single density', 'Single-density safety shoe for general industrial applications.', '38-46'],
+  ['everest', 'EVE-402-SD', 'Single density', 'Single-density safety shoe with durable industrial outsole.', '38-46'],
+  ['everest', 'EVE-403-SD', 'Single density', 'Single-density safety shoe for warehouse and factory work.', '38-46'],
+  ['everest', 'EVE-601-SD', 'Single density', 'Single-density industrial safety shoe with comfortable lining.', '38-46'],
+  ['everest', 'EVE-602-SD', 'Single density', 'Single-density PU safety shoe for everyday protection.', '38-46'],
+  ['everest', 'EVE-602-DD', 'Double density', 'Double-density PU safety shoe for enhanced cushioning.', '38-46'],
+  ['everest', 'EVE-603-SD', 'Single density', 'Single-density safety shoe with steel-toe option.', '38-46'],
+  ['everest', 'EVE-604-DD', 'Double density', 'Double-density safety shoe with steel-toe protection.', '38-46'],
+  ['everest', 'EVE-605-SD', 'Single density', 'Single-density PU safety shoe with industrial grip.', '38-46'],
+  ['everest', 'EVE-607-SD', 'Single density', 'Single-density safety shoe for industrial floor work.', '38-46'],
+  ['everest', 'EVE-701-SD', 'Single density', 'Single-density PU sole safety shoe.', '38-46'],
+  ['everest', 'EVE-701-DD', 'Double density', 'Double-density PU sole safety shoe.', '38-46'],
+  ['everest', 'EVE-702-SD', 'Single density', 'Single-density safety shoe with practical worksite fit.', '38-46'],
+  ['everest', 'EVE-703-SD', 'Metal free', 'TPU and leather upper, black mesh lining and optional metal-free construction.', '38-46'],
+  ['everest', 'EVE-704-DD', 'Metal free', 'TPU and leather upper, black mesh lining and double-density sole.', '38-46'],
+  ['everest', 'EVE-801-SD', 'Single density', 'Black single-density safety shoe for industrial applications.', '38-46'],
+  ['everest', 'EVE-802', 'Chef / clog', 'Chef and clog shoe designed for all-day support and comfort.', '38-46'],
+  ['everest', 'Nitrile Low Ankle', 'Nitrile', 'Full-grain leather, Cambrella lining and 300°C nitrile sole.', '38-46'],
+  ['everest', 'Nitrile High Ankle', 'Nitrile', 'Full-grain leather, mesh lining and 300°C nitrile sole.', '38-46'],
+  ['everest', 'Toe Guard', 'Toe guard', 'Synthetic leather, black mesh lining, steel toe and PVC sole.', '38-46'],
+].map(([brand, name, subcategory, description, size]) => ({
+  id: `${brand}-${String(name).toLowerCase().replace(/[^a-z0-9]+/g, '-')}`,
+  name: String(name),
+  brand: brand === 'jcb' ? 'JCB' : 'Everest Safety',
+  subcategory: String(subcategory),
+  category: 'safety-shoes' as const,
+  image: PLACEHOLDER_IMAGE,
+  certifications: ['ISI', 'EN'] as CertificationCode[],
+  shortDesc: String(description),
+  description: String(description),
+  specs: { Brand: brand === 'jcb' ? 'JCB' : 'Everest Safety', Subcategory: String(subcategory), Sizes: String(size) },
+  sizes: String(size).split('-'),
+  featured: false,
+}));
+
+products.push(...catalogSafetyShoes);
 
 export const getProduct = (id: string) => products.find((p) => p.id === id);
 

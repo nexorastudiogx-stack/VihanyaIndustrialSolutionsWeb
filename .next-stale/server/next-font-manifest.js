@@ -1,0 +1,1 @@
+self.__NEXT_FONT_MANIFEST="{\"pages\":{},\"app\":{\"/vercel/share/v0-project/app/layout\":[\"static/media/3667c091265cf81b-s.p.woff2\",\"static/media/5fb5c05ff73c0616-s.p.woff2\",\"static/media/437e5f23c97e320c-s.p.woff2\",\"static/media/e4af272ccee01ff0-s.p.woff2\"]},\"appUsingSizeAdjust\":true,\"pagesUsingSizeAdjust\":false}"
