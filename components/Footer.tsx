@@ -5,7 +5,7 @@ import { addressText, site } from '@/lib/site';
 
 export default function Footer() {
   return (
-    <footer className="mt-20 bg-charcoal text-offwhite">
+    <footer className="mt-24 bg-charcoal text-offwhite">
       <div className="hazard h-2" aria-hidden />
       <div className="container-x grid gap-10 py-12 md:grid-cols-3">
         <div>

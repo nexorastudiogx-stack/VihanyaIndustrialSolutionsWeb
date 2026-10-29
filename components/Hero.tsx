@@ -15,8 +15,8 @@ const scatter = (i: number) => ({
 
 export default function Hero() {
   return (
-    <section className="blueprint bg-charcoal text-offwhite">
-      <div className="container-x grid items-center gap-10 py-12 lg:grid-cols-[1fr_1.1fr] lg:py-20">
+    <section className="blueprint relative overflow-hidden bg-charcoal text-offwhite">
+      <div className="container-x relative grid items-center gap-10 py-16 lg:grid-cols-[0.9fr_1.1fr] lg:py-24">
         <div>
           <h1 className="text-5xl font-bold leading-[0.95] sm:text-6xl lg:text-7xl">
             Your safety, our responsibility.
@@ -28,7 +28,10 @@ export default function Hero() {
             <Link href="/quote" className="btn btn-primary">Request a quote</Link>
             <Link href="/products" className="btn btn-outline-light">Browse products</Link>
           </div>
-          <p className="mt-6 text-sm text-offwhite/60">{site.yearsInBusiness} years supplying safety equipment</p>
+          <div className="mt-7 flex items-center gap-3 text-sm text-offwhite/60">
+            <span className="h-px w-10 bg-amber" aria-hidden />
+            <span>{site.yearsInBusiness} years supplying safety equipment</span>
+          </div>
         </div>
 
         {/* The one orchestrated moment: category tiles assemble on load. */}

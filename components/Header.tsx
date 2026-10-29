@@ -19,7 +19,7 @@ export default function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 border-b-4 border-amber bg-charcoal text-offwhite">
+    <header className="sticky top-0 z-40 border-b border-offwhite/15 bg-charcoal text-offwhite">
       <div className="container-x flex h-16 items-center justify-between gap-4">
         {/* TODO(client): replace this wordmark with the real logo (put the file in /public and use next/image). */}
         <Link href="/" className="leading-none" onClick={() => setOpen(false)}>

@@ -8,9 +8,9 @@ export default function ProductCard({ product }: { product: Product }) {
   return (
     <Link
       href={`/products/${product.id}`}
-      className="group flex h-full flex-col border border-steel/25 bg-white transition duration-200 hover:-translate-y-1 hover:border-charcoal hover:shadow-lg motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+      className="group flex h-full flex-col border border-line bg-paper transition duration-300 hover:-translate-y-1 hover:border-charcoal hover:shadow-[8px_8px_0_rgb(var(--c-amber))] motion-reduce:transition-none motion-reduce:hover:translate-y-0"
     >
-      <div className="relative aspect-[4/3] bg-steel/10">
+      <div className="relative aspect-[4/3] overflow-hidden bg-offwhite">
         <Image
           src={product.image}
           alt={product.name}

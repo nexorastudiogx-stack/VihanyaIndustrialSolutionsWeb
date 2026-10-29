@@ -14,6 +14,8 @@ const config: Config = {
         amber: token('c-amber'),
         signal: token('c-signal'),
         offwhite: token('c-offwhite'),
+        paper: token('c-paper'),
+        line: token('c-line'),
       },
       fontFamily: {
         heading: ['var(--font-heading)', 'Impact', 'sans-serif'],
