@@ -19,17 +19,20 @@ export default function HomePage() {
     <>
       <Hero />
 
-      <div className="bg-amber text-charcoal">
-        <ul className="container-x flex flex-wrap justify-between gap-x-8 gap-y-1 py-3 text-sm font-semibold">
+      <div className="border-y border-charcoal/10 bg-amber text-charcoal">
+        <ul className="container-x flex flex-wrap justify-between gap-x-8 gap-y-1 py-3 text-[11px] font-bold uppercase tracking-[0.14em]">
           <li>{site.yearsInBusiness} years in business</li>
           <li>ISI, CE and EN certified products</li>
           <li>Based in {site.address.city}, {site.address.state}</li>
         </ul>
       </div>
 
-      <section className="container-x mt-16" aria-labelledby="featured-title">
-        <div className="flex items-end justify-between gap-4">
-          <h2 id="featured-title" className="text-4xl font-bold">Popular safety gear</h2>
+      <section className="container-x mt-20" aria-labelledby="featured-title">
+        <div className="flex flex-col gap-3 border-b border-charcoal/20 pb-5 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="mb-2 text-xs font-bold uppercase tracking-[0.18em] text-steel">Field-tested essentials</p>
+            <h2 id="featured-title" className="text-5xl font-bold">Popular safety gear</h2>
+          </div>
           <Link href="/products" className="text-sm font-semibold underline underline-offset-4">View all products</Link>
         </div>
         <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -39,11 +42,14 @@ export default function HomePage() {
         </ul>
       </section>
 
-      <section className="container-x mt-20" aria-labelledby="why-title">
-        <h2 id="why-title" className="text-4xl font-bold">Why buyers choose {site.shortName}</h2>
+      <section className="container-x mt-24" aria-labelledby="why-title">
+        <div className="max-w-2xl">
+          <p className="mb-2 text-xs font-bold uppercase tracking-[0.18em] text-steel">Built for the worksite</p>
+          <h2 id="why-title" className="text-5xl font-bold">Why buyers choose {site.shortName}</h2>
+        </div>
         <div className="mt-8 grid gap-8 md:grid-cols-3">
           {reasons.map(({ icon: Icon, title, text }) => (
-            <div key={title} className="border-l-4 border-amber pl-5">
+            <div key={title} className="border-t-2 border-amber pt-5">
               <Icon className="text-steel" size={28} />
               <h3 className="mt-3 text-2xl font-semibold">{title}</h3>
               <p className="mt-1 text-steel">{text}</p>
