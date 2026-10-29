@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------------------------------------------------------------
+   BRAND TOKENS (space-separated RGB so Tailwind opacity works).
+   TODO: swap in the client's real brand colors here.
+   --------------------------------------------------------------- */
+:root {
+  --c-charcoal: 28 31 38;   /* #1C1F26 */
+  --c-steel: 74 81 96;      /* #4A5160 */
+  --c-amber: 242 163 60;    /* #F2A33C  safety amber */
+  --c-signal: 192 57 43;    /* #C0392B  signal red, CTAs only */
+  --c-offwhite: 247 246 243;/* #F7F6F3 */
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { @apply bg-offwhite font-body text-charcoal antialiased; }
+  h1, h2, h3, h4 { @apply font-heading tracking-tight; }
+  :focus-visible {
+    outline: 2px solid rgb(var(--c-charcoal));
+    box-shadow: 0 0 0 5px rgb(var(--c-amber));
+  }
+}
+
+@layer components {
+  .container-x { @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8; }
+
+  .btn {
+    @apply inline-flex min-h-[48px] items-center justify-center gap-2 rounded-sm px-5 py-2.5
+      font-heading text-lg font-semibold tracking-wide transition-colors;
+  }
+  .btn-primary { @apply bg-signal text-offwhite hover:brightness-110; }
+  .btn-dark { @apply bg-charcoal text-offwhite hover:bg-steel; }
+  .btn-outline { @apply border-2 border-charcoal text-charcoal hover:bg-charcoal hover:text-offwhite; }
+  .btn-outline-light { @apply border-2 border-offwhite/40 text-offwhite hover:border-amber hover:text-amber; }
+
+  .label { @apply mb-1 block text-sm font-medium text-charcoal; }
+  .field {
+    @apply w-full rounded-sm border border-steel/40 bg-white px-3 py-2.5 text-base text-charcoal
+      placeholder:text-steel/60 focus:border-charcoal;
+  }
+
+  .hazard {
+    background-image: repeating-linear-gradient(
+      -45deg,
+      rgb(var(--c-amber)) 0 12px,
+      rgb(var(--c-charcoal)) 12px 24px
+    );
+  }
+  .blueprint {
+    background-image:
+      linear-gradient(rgb(var(--c-steel) / 0.22) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(var(--c-steel) / 0.22) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
