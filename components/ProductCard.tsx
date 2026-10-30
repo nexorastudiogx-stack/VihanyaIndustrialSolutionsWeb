@@ -11,13 +11,19 @@ export default function ProductCard({ product }: { product: Product }) {
       className="group flex h-full flex-col border border-line bg-paper transition duration-300 hover:-translate-y-1 hover:border-charcoal hover:shadow-[8px_8px_0_rgb(var(--c-amber))] motion-reduce:transition-none motion-reduce:hover:translate-y-0"
     >
       <div className="relative aspect-[4/3] overflow-hidden bg-offwhite">
-        <Image
-          src={product.image}
-          alt={product.name}
-          fill
-          sizes="(min-width:1280px) 25vw, (min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw"
-          className="object-contain p-3"
-        />
+        {product.catalogue ? (
+          <object data={`${product.catalogue}#page=1`} type="application/pdf" aria-label={`${product.brand ?? 'Brand'} catalogue preview`} className="pointer-events-none size-full scale-[1.35] origin-top object-cover">
+            <Image src={product.image} alt={product.name} fill sizes="(min-width:1280px) 25vw, (min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw" className="object-contain p-3" />
+          </object>
+        ) : (
+          <Image
+            src={product.image}
+            alt={product.name}
+            fill
+            sizes="(min-width:1280px) 25vw, (min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw"
+            className="object-contain p-3"
+          />
+        )}
       </div>
       <div className="flex flex-1 flex-col gap-2 border-t-2 border-amber p-4">
         <div className="flex flex-wrap items-center gap-2 text-xs text-steel">

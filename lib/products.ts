@@ -9,6 +9,7 @@ export interface Product {
   category: CategorySlug;
   brand?: string;
   subcategory?: string;
+  catalogue?: string;
   /** Path under /public, e.g. '/images/products/steel-toe-shoe.jpg' */
   image: string;
   certifications: CertificationCode[];
@@ -213,7 +214,7 @@ const catalogSafetyShoes: Product[] = [
   ['everest', 'Nitrile High Ankle', 'Nitrile', 'Full-grain leather, mesh lining and 300°C nitrile sole.', '38-46'],
   ['everest', 'Toe Guard', 'Toe guard', 'Synthetic leather, black mesh lining, steel toe and PVC sole.', '38-46'],
 ].map(([brand, name, subcategory, description, size]) => ({
-  id: `${brand}-${String(name).toLowerCase().replace(/[^a-z0-9]+/g, '-')}`,
+  id: `${brand}-${String(name).toLowerCase().replace(/[^a-z0-9]+/g, '-')}`, 
   name: String(name),
   brand: brand === 'jcb' ? 'JCB' : 'Everest Safety',
   subcategory: String(subcategory),
@@ -227,7 +228,38 @@ const catalogSafetyShoes: Product[] = [
   featured: false,
 }));
 
-products.push(...catalogSafetyShoes);
+const canvasClubProducts: Product[] = [
+  ['parma', 'Parma S1', 'S1', 'DIP PU and foam cushion with steel toe protection.', '40-46'],
+  ['trento', 'Trento S1', 'S1', 'DIP PU and foam cushion with steel toe protection.', '40-46'],
+  ['pisa', 'Pisa S1', 'S1', 'Phylon and rubber outsole with fiberglass toe protection.', '39-46'],
+  ['siena', 'Siena S1', 'S1', 'Double-density PU outsole with fiberglass toe protection.', '37-48'],
+  ['turin', 'Turin S2', 'S2', 'Double-density PU outsole with fiberglass toe protection.', '37-48'],
+  ['milan', 'Milan S1', 'S1', 'DIP PU with air cushion and steel toe protection.', '38-46'],
+  ['palermo', 'Palermo S2', 'S2', 'DIP PU outsole with steel toe protection.', '40-46'],
+  ['genoa', 'Genoa S2', 'S2', 'DIP PU outsole with steel toe protection.', '40-46'],
+  ['florence', 'Florence S1', 'S1', 'Double-density PU outsole with steel toe protection.', '40-46'],
+  ['rimini', 'Rimini S1', 'S1', 'Phylon and rubber outsole with fiberglass toe protection.', '39-48'],
+  ['sorrento', 'Sorrento ESD', 'ESD', 'DIP PU and foam cushion with steel toe protection.', '40-46'],
+  ['venice', 'Venice S1', 'S1', 'Phylon and rubber outsole with fiberglass toe protection.', '39-46'],
+  ['riva', 'Riva', 'S1', 'Phylon and rubber outsole with steel toe protection.', '39-46'],
+  ['rome', 'Rome S2', 'S2', 'Phylon and rubber outsole with fiberglass toe protection.', '39-46'],
+  ['verona', 'Verona', 'S1', 'DIP PU outsole with fiberglass toe protection.', '37-42'],
+].map(([slug, name, subcategory, description, size]) => ({
+  id: `canvas-club-${slug}`,
+  name,
+  brand: 'Canvas Club',
+  subcategory,
+  catalogue: '/catalogue/canvas-club.pdf',
+  category: 'safety-shoes',
+  image: PLACEHOLDER_IMAGE,
+  certifications: ['ISI', 'EN'],
+  shortDesc: description,
+  description,
+  specs: { Brand: 'Canvas Club', Subcategory: subcategory, Sizes: size },
+  sizes: size.split('-'),
+}));
+
+products.push(...catalogSafetyShoes, ...canvasClubProducts);
 
 export const getProduct = (id: string) => products.find((p) => p.id === id);
 
