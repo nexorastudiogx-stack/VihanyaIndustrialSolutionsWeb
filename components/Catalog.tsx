@@ -19,6 +19,7 @@ interface Props {
 
 export default function Catalog({ products, initialCategory = '', initialQuery = '' }: Props) {
   const [category, setCategory] = useState(initialCategory);
+  const [brand, setBrand] = useState('');
   const [query, setQuery] = useState(initialQuery);
   const [certs, setCerts] = useState<CertificationCode[]>([]);
   const [visible, setVisible] = useState(PAGE_SIZE);
@@ -29,10 +30,13 @@ export default function Catalog({ products, initialCategory = '', initialQuery =
     return map;
   }, [products]);
 
+  const brands = useMemo(() => Array.from(new Set(products.filter((p) => p.category === 'safety-shoes' && p.brand).map((p) => p.brand as string))).sort(), [products]);
+
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
     return products.filter((p) => {
       if (category && p.category !== category) return false;
+      if (brand && p.brand !== brand) return false;
       if (!certs.every((c) => p.certifications.includes(c))) return false;
       if (!q) return true;
       return `${p.name} ${p.brand ?? ''} ${p.subcategory ?? ''} ${p.shortDesc} ${p.id} ${categoryName(p.category)}`.toLowerCase().includes(q);
@@ -40,10 +44,11 @@ export default function Catalog({ products, initialCategory = '', initialQuery =
   }, [products, category, query, certs]);
 
   const shown = filtered.slice(0, visible);
-  const hasFilters = Boolean(category || query || certs.length);
+  const hasFilters = Boolean(category || brand || query || certs.length);
 
   const reset = () => {
     setCategory('');
+    setBrand('');
     setQuery('');
     setCerts([]);
     setVisible(PAGE_SIZE);
@@ -85,6 +90,20 @@ export default function Catalog({ products, initialCategory = '', initialQuery =
             </button>
           ))}
         </div>
+
+        {brands.length > 0 && (
+          <div className="flex flex-wrap items-center gap-2" role="group" aria-label="Safety shoe brands">
+            <span className="text-sm text-steel">Brand:</span>
+            <button type="button" aria-pressed={!brand} onClick={() => { setBrand(''); setVisible(PAGE_SIZE); }} className={chip(!brand)}>
+              All brands
+            </button>
+            {brands.map((name) => (
+              <button key={name} type="button" aria-pressed={brand === name} onClick={() => { setBrand(name); setCategory('safety-shoes'); setVisible(PAGE_SIZE); }} className={chip(brand === name)}>
+                {name}
+              </button>
+            ))}
+          </div>
+        )}
 
         <div className="flex flex-wrap items-center gap-2" role="group" aria-label="Certification">
           <span className="text-sm text-steel">Certified:</span>
